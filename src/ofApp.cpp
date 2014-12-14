@@ -57,7 +57,7 @@ void ofApp::setup(){
     /*
      * GUI
      */
-    gui = new ofxUICanvas();
+    gui = new ofxUISuperCanvas("", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
     gui->addLabel("TOWER CONTROL");
     gui->addSlider("Tower count", 3, 50, towerCount);
@@ -72,7 +72,8 @@ void ofApp::setup(){
     gui->addSlider("Sound amp",1.0f,10.0f,soundAmp);
     gui->addSpacer();
     gui->addButton("Save PDF", false);
-    gui->addSlider("Zoom", 0.5f, 10.0f, viewportScale);
+    gui->addSlider("Zoom", 0.5f, 10.0f, &viewportScale);
+    gui->addButton("Reset view", false);
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
     gui->loadSettings("settings.xml");
@@ -163,7 +164,12 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
 {
-
+    switch (key)
+    {
+        case ' ':
+            gui->toggleVisible();
+            break;
+    }
 }
 
 //--------------------------------------------------------------
@@ -178,19 +184,28 @@ void ofApp::mouseMoved(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-    ofPoint currentDeltaPoint = ofPoint(x - mouseOrigin.x, y - mouseOrigin.y);
 
-    viewportUserOrigin = viewportOrigin + currentDeltaPoint;
+    if (userPanInit)
+    {
+        ofPoint currentDeltaPoint = ofPoint(x - mouseOrigin.x, y - mouseOrigin.y);
+        viewportUserOrigin = viewportOrigin + currentDeltaPoint;
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    mouseOrigin = ofPoint(x, y);
+
+    if (!(gui->isHit(x, y)))
+    {
+        userPanInit = true;
+        mouseOrigin = ofPoint(x, y);
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
     viewportOrigin = viewportUserOrigin;
+    userPanInit = false;
 }
 
 //--------------------------------------------------------------
@@ -273,6 +288,13 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     {
         oneShot = true;
     }
+    if (e.getName() == "Reset view")
+    {
+        viewportOrigin = ofPoint(ofGetWindowWidth()*0.5, ofGetWindowHeight()*0.5);
+        viewportUserOrigin = viewportOrigin;
+        viewportScale = 1.0f;
+    }
+
 }
 
 void ofApp::generateTower() {

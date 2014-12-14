@@ -22,6 +22,7 @@ class ofApp : public ofBaseApp{
     bool    lockTowerUpdate = false;
     bool    listenSound = false;
     bool    oneShot = false;
+    bool    userPanInit = false;
 
     float smoothedVol;
     float scaledVol;
