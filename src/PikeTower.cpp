@@ -50,6 +50,7 @@ void PikeTower::draw(float scale) {
     for ( int i=0; i < housePoints.size(); i++ ) {
         path.lineTo( housePoints[i].x, housePoints[i].y + factor );
     }
+    path.lineTo( housePoints[0].x, housePoints[0].y + factor );
     path.close();
 
     for ( int i=0; i < points.size(); i++ ) {

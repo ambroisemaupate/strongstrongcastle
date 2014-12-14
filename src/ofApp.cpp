@@ -111,47 +111,21 @@ void ofApp::draw(){
     ofPushMatrix();
     ofTranslate(marginWidth + (towerOffset/2), marginWidth);
 
-    for (unsigned int i = 0; i < towers.size(); i++)
+    for (unsigned int i = 0; i < (int)towers.size()/2; i++)
     {
         ofPushMatrix();
         ofTranslate((documentSize.x - towerOffset) * (i / (float) towerCount), ofGetWindowHeight()*0.666);
         towers[i]->draw(documentSize.x/towers.size());
         ofPopMatrix();
     }
-    ofPopMatrix();
-
-
-    // draw the left channel:
-    /*ofPushStyle();
+    for (unsigned int j = towers.size() - 1; j >= towers.size()/2; j--)
+    {
         ofPushMatrix();
-        ofTranslate(32, 170, 0);
-
-        ofSetColor(225);
-        ofDrawBitmapString("Left Channel", 4, 18);
-
-        ofSetLineWidth(1);
-        ofRect(0, 0, 512, 200);
-
-        ofSetColor(245, 58, 135);
-        ofSetLineWidth(3);
-
-            ofBeginShape();
-            for (unsigned int i = 0; i < left.size(); i++){
-                ofVertex(i*2, 100 -left[i]*180.0f);
-            }
-            ofEndShape(false);
-
+        ofTranslate((documentSize.x - towerOffset) * (j / (float) towerCount), ofGetWindowHeight()*0.666);
+        towers[j]->draw(documentSize.x/towers.size());
         ofPopMatrix();
-    ofPopStyle();*/
-
-
-    /*ofSetColor(225);
-    ofDrawBitmapString("AUDIO INPUT EXAMPLE", 32, 32);
-    ofDrawBitmapString("press 's' to unpause the audio\n'e' to pause the audio", 31, 92);
-
-    ofSetColor(225);
-    string reportString = "buffers received: "+ofToString(bufferCounter)+"\ndraw routines called: "+ofToString(drawCounter)+"\nticks: " + ofToString(soundStream.getTickCount());
-    ofDrawBitmapString(reportString, 32, 589);*/
+    }
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
@@ -244,6 +218,11 @@ void ofApp::generateTower() {
 
     lockTowerUpdate = true;
     soundStream.stop();
+
+    for (unsigned int i = 0; i < towers.size(); ++i) {
+        delete towers[i];
+    }
+
     towers.clear();
 
     for (unsigned int i = 0; i < towerCount; ++i)

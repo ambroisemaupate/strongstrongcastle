@@ -27,7 +27,7 @@ class MelonTower : public TowerInterface {
     vector<ofPoint> melonPoints;
 public:
     MelonTower(float delay);
-    ~MelonTower();
+    virtual ~MelonTower();
 
     virtual void draw(float scale);
     virtual void buildPoints();

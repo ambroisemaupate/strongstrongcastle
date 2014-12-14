@@ -30,7 +30,7 @@ protected:
 
 public:
     StairTower(float delay);
-    ~StairTower();
+    virtual ~StairTower();
 
     virtual void update(float medium);
     virtual void draw(float scale);

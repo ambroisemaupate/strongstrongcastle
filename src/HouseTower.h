@@ -27,7 +27,7 @@ class HouseTower : public TowerInterface {
     vector<ofPoint> housePoints;
 public:
     HouseTower(float delay);
-    ~HouseTower();
+    virtual ~HouseTower();
 
     virtual void draw(float scale);
     virtual void buildPoints();

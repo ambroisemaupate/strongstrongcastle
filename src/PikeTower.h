@@ -27,7 +27,7 @@ class PikeTower : public TowerInterface {
     vector<ofPoint> housePoints;
 public:
     PikeTower(float delay);
-    ~PikeTower();
+    virtual ~PikeTower();
 
     virtual void draw(float scale);
     virtual void buildPoints();

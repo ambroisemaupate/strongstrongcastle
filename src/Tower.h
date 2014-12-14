@@ -29,7 +29,7 @@ protected:
 
 public:
     Tower(float delay);
-    ~Tower();
+    virtual ~Tower();
 
     virtual void update(float medium);
     virtual void draw(float scale);
