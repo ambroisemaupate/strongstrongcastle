@@ -1,6 +1,8 @@
 #include "ofApp.h"
 #include "Tower.h"
 #include "MelonTower.h"
+#include "HouseTower.h"
+#include "PikeTower.h"
 #include "StairTower.h"
 
 //--------------------------------------------------------------
@@ -246,7 +248,7 @@ void ofApp::generateTower() {
 
     for (unsigned int i = 0; i < towerCount; ++i)
     {
-        switch  ((int) ofRandom(0,3)) {
+        switch  ((int) ofRandom(0,5)) {
             case 0:
                 addTower( new MelonTower(i*500.0f) );
                 break;
@@ -255,6 +257,12 @@ void ofApp::generateTower() {
                 break;
             case 2:
                 addTower( new StairTower(i*500.0f) );
+                break;
+            case 3:
+                addTower( new HouseTower(i*500.0f) );
+                break;
+            case 4:
+                addTower( new PikeTower(i*500.0f) );
                 break;
         }
     }
