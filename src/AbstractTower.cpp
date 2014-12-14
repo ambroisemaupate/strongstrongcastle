@@ -17,7 +17,7 @@ void AbstractTower::update(float medium, bool wavingTowers) {
     }
 }
 
-void AbstractTower::draw(float scale) {
-    lineWidth = 8 * scale/100.0f;
+void AbstractTower::draw(float scale, int towerLineWidth) {
+    lineWidth = towerLineWidth * scale/100.0f;
     lineWidth = lineWidth > 1 ? lineWidth : 1;
 }

@@ -14,7 +14,7 @@
 class TowerInterface {
 
 public:
-    virtual void draw(float scale) = 0;
+    virtual void draw(float scale, int towerLineWidth) = 0;
     virtual void update(float medium, bool wavingTowers = false) = 0;
     virtual void buildPoints() = 0;
 };

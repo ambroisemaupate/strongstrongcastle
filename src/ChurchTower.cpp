@@ -43,8 +43,8 @@ void ChurchTower::buildPoints() {
     basePoints.push_back(ofPoint( 0,1 ));
 }
 
-void ChurchTower::draw(float scale) {
-    AbstractTower::draw(scale);
+void ChurchTower::draw(float scale, int towerLineWidth) {
+    AbstractTower::draw(scale, towerLineWidth);
 
     ofPath path;
 

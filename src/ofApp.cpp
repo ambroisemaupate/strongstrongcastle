@@ -5,6 +5,8 @@
 #include "PikeTower.h"
 #include "StairTower.h"
 #include "ChurchTower.h"
+#include "NippleTower.h"
+#include "BalconyTower.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -12,12 +14,6 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     ofEnableSmoothing();
     ofShowCursor();
-
-    /**
-     *  Setup sound
-     */
-    soundStream.listDevices();
-
     /*
      * High quality renderer
      */
@@ -25,6 +21,12 @@ void ofApp::setup(){
     ofSetCurrentRenderer(_shivaVGRenderer);
     _shivaVGRenderer->setLineCapStyle(VG_CAP_ROUND);
     _shivaVGRenderer->setLineJoinStyle(VG_JOIN_ROUND);
+
+    /**
+     *  Setup sound
+     */
+    soundStream.listDevices();
+
 
 
     int bufferSize = 256;
@@ -47,11 +49,10 @@ void ofApp::setup(){
      */
     towerCount = 10;
     marginWidth = 20;
-    documentSize.x = ofGetWindowWidth() - marginWidth*2;
-    documentSize.y = ofGetWindowHeight() - marginWidth*2;
+    documentSize.x = ofGetWindowWidth() - marginWidth * 2;
+    documentSize.y = ofGetWindowHeight() - marginWidth * 2;
 
     generateTower();
-
 
     /*
      * GUI
@@ -59,8 +60,9 @@ void ofApp::setup(){
     gui = new ofxUICanvas();
     gui->addSpacer();
     gui->addLabel("TOWER CONTROL");
-    gui->addSlider("Tower count",3,50,towerCount);
-    gui->addSlider("Tower offset",-1000.0f,1000.0f,towerOffset);
+    gui->addSlider("Tower count", 3, 50, towerCount);
+    gui->addSlider("Tower offset", -1000.0f, 1000.0f, towerOffset);
+    gui->addSlider("Line width", 1, 10, towerLineWidth);
     gui->addSpacer();
     gui->addButton("Shuffle towers", false);
     gui->addToggle("Waving towers", wavingTowers);
@@ -68,10 +70,16 @@ void ofApp::setup(){
     gui->addLabel("SOUND CONTROL");
     gui->addToggle("Listen sound", listenSound);
     gui->addSlider("Sound amp",1.0f,10.0f,soundAmp);
+    gui->addSpacer();
+    gui->addButton("Save PDF", false);
+    gui->addSlider("Zoom", 0.5f, 10.0f, viewportScale);
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
     gui->loadSettings("settings.xml");
 
+
+    viewportOrigin = ofPoint(ofGetWindowWidth()*0.5, ofGetWindowHeight()*0.5);
+    viewportUserOrigin = viewportOrigin;
 }
 
 //--------------------------------------------------------------
@@ -113,24 +121,43 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+    if( oneShot ){
+        ofBeginSaveScreenAsPDF("screenshot-"+ofGetTimestampString()+".pdf", false);
+    }
     ofPushMatrix();
-    ofTranslate(marginWidth + (towerOffset/2), marginWidth);
+    // User pan
+    ofTranslate(viewportUserOrigin);
+
+    ofPushMatrix();
+    // Zoom
+    ofScale(viewportScale, viewportScale);
+
+    ofPushMatrix();
+    // Center viewport to center zoom
+    ofTranslate(ofGetWindowWidth()*-0.5, ofGetWindowHeight()*-0.5);
 
     for (unsigned int i = 0; i < (int)towers.size()/2; i++)
     {
         ofPushMatrix();
         ofTranslate((documentSize.x - towerOffset) * (i / (float) towerCount), ofGetWindowHeight()*0.666);
-        towers[i]->draw(documentSize.x/towers.size());
+        towers[i]->draw(documentSize.x/towers.size(), towerLineWidth);
         ofPopMatrix();
     }
     for (unsigned int j = towers.size() - 1; j >= towers.size()/2; j--)
     {
         ofPushMatrix();
         ofTranslate((documentSize.x - towerOffset) * (j / (float) towerCount), ofGetWindowHeight()*0.666);
-        towers[j]->draw(documentSize.x/towers.size());
+        towers[j]->draw(documentSize.x/towers.size(), towerLineWidth);
         ofPopMatrix();
     }
     ofPopMatrix();
+    ofPopMatrix();
+    ofPopMatrix();
+
+    if( oneShot ){
+        ofEndSaveScreenAsPDF();
+        oneShot = false;
+    }
 }
 
 //--------------------------------------------------------------
@@ -151,17 +178,19 @@ void ofApp::mouseMoved(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
+    ofPoint currentDeltaPoint = ofPoint(x - mouseOrigin.x, y - mouseOrigin.y);
 
+    viewportUserOrigin = viewportOrigin + currentDeltaPoint;
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+    mouseOrigin = ofPoint(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    viewportOrigin = viewportUserOrigin;
 }
 
 //--------------------------------------------------------------
@@ -215,8 +244,7 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
 
-        if (true == toggle->getValue())
-        {
+        if (true == toggle->getValue()) {
             soundStream.start();
         } else {
             soundStream.stop();
@@ -226,11 +254,25 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
     if (e.getName() == "Waving towers")
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-
         wavingTowers = (bool) toggle->getValue();
     }
 
+    if (e.getName() == "Line width")
+    {
+        ofxUISlider *slider = e.getSlider();
+        towerLineWidth = (int) slider->getScaledValue();
+    }
 
+    if (e.getName() == "Zoom")
+    {
+        ofxUISlider *slider = e.getSlider();
+        viewportScale = (float) slider->getScaledValue();
+    }
+
+    if (e.getName() == "Save PDF")
+    {
+        oneShot = true;
+    }
 }
 
 void ofApp::generateTower() {
@@ -245,7 +287,7 @@ void ofApp::generateTower() {
 
     for (unsigned int i = 0; i < towerCount; ++i)
     {
-        switch  ((int) ofRandom(0,6)) {
+        switch  ((int) ofRandom(0,8)) {
             case 0:
                 addTower( new MelonTower(i*500.0f) );
                 break;
@@ -263,6 +305,12 @@ void ofApp::generateTower() {
                 break;
             case 5:
                 addTower( new ChurchTower(i*500.0f) );
+                break;
+            case 6:
+                addTower( new NippleTower(i*500.0f) );
+                break;
+            case 7:
+                addTower( new BalconyTower(i*500.0f) );
                 break;
 
         }

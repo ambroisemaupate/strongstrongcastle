@@ -24,7 +24,7 @@ public:
     HouseTower(float delay);
     virtual ~HouseTower();
 
-    virtual void draw(float scale);
+    virtual void draw(float scale, int towerLineWidth);
     virtual void buildPoints();
 };
 

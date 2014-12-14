@@ -46,9 +46,9 @@ void Tower::buildPoints() {
     basePoints.push_back(ofPoint( 0,1 ));
 }
 
-void Tower::draw(float scale) {
+void Tower::draw(float scale, int towerLineWidth) {
 
-    AbstractTower::draw(scale);
+    AbstractTower::draw(scale, towerLineWidth);
 
     ofPath path;
 

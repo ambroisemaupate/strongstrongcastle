@@ -53,8 +53,8 @@ void StairTower::buildPoints() {
     basePoints.push_back(ofPoint( 0.9f,1 ));
 }
 
-void StairTower::draw(float scale) {
-    AbstractTower::draw(scale);
+void StairTower::draw(float scale, int towerLineWidth) {
+    AbstractTower::draw(scale, towerLineWidth);
 
     ofPath path;
 

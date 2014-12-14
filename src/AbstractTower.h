@@ -24,7 +24,7 @@ protected:
 
 public:
     virtual void update(float medium, bool wavingTowers = false);
-    virtual void draw(float scale);
+    virtual void draw(float scale, int towerLineWidth);
 };
 
 #endif /* defined(__StrongStrongCastle__AbstractTower__) */

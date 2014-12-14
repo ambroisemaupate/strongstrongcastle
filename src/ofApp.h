@@ -21,10 +21,16 @@ class ofApp : public ofBaseApp{
     int     drawCounter;
     bool    lockTowerUpdate = false;
     bool    listenSound = false;
+    bool    oneShot = false;
 
     float smoothedVol;
     float scaledVol;
     float soundAmp;
+
+    float viewportScale = 1.0f;
+    ofPoint viewportOrigin;
+    ofPoint viewportUserOrigin;
+    ofPoint mouseOrigin;
 
     ofSoundStream soundStream;
     ofPtr<ofxShivaVGRenderer> _shivaVGRenderer;
@@ -48,6 +54,7 @@ public:
     ofPoint documentSize;
     int marginWidth;
     int towerOffset = 0;
+    int towerLineWidth = 7;
     float towerCount;
     bool wavingTowers = false;
 

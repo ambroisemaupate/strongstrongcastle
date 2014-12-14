@@ -1,12 +1,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Tower count</Name>
-    <Value>14.113300323</Value>
+    <Value>18.280788422</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tower offset</Name>
-    <Value>300.492645264</Value>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line width</Name>
+    <Value>7.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -21,5 +26,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Sound amp</Name>
-    <Value>2.064039469</Value>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Zoom</Name>
+    <Value>1.248768449</Value>
 </Widget>

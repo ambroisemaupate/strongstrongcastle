@@ -27,7 +27,7 @@ public:
     StairTower(float delay);
     virtual ~StairTower();
 
-    virtual void draw(float scale);
+    virtual void draw(float scale, int towerLineWidth);
     virtual void buildPoints();
 };
 

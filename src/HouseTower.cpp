@@ -38,8 +38,8 @@ void HouseTower::buildPoints() {
     basePoints.push_back(ofPoint( 0.1,1 ));
 }
 
-void HouseTower::draw(float scale) {
-    AbstractTower::draw(scale);
+void HouseTower::draw(float scale, int towerLineWidth) {
+    AbstractTower::draw(scale, towerLineWidth);
     ofPath path;
 
     for ( int i=0; i < housePoints.size(); i++ ) {

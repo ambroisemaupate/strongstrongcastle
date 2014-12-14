@@ -37,8 +37,8 @@ void MelonTower::buildPoints() {
     basePoints.push_back(ofPoint( 0.1,1 ));
 }
 
-void MelonTower::draw(float scale) {
-    AbstractTower::draw(scale);
+void MelonTower::draw(float scale, int towerLineWidth) {
+    AbstractTower::draw(scale, towerLineWidth);
 
     ofPath path;
 
