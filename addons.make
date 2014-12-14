@@ -1,0 +1,5 @@
+ofxSvg
+ofxXmlSettings
+ofxUI
+ofxShivaVG
+ofxVectorGraphics
