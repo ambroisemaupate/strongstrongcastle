@@ -5,8 +5,8 @@
 //  Created by Ambroise Maupate on 13/12/2014.
 //
 //
-#include "ofApp.h"
 #include "Tower.h"
+#include "ofApp.h"
 
 Tower::Tower(float delay){
 
@@ -24,6 +24,7 @@ void Tower::buildPoints() {
     origin = ofPoint(0, 0);
 
     // Moving points
+    points.push_back(ofPoint( 0,0.143f ));
     points.push_back(ofPoint( 0,0.0f ));
     points.push_back(ofPoint( 0.143f,0 ));
     points.push_back(ofPoint( 0.143f,0.143f ));
@@ -45,14 +46,9 @@ void Tower::buildPoints() {
     basePoints.push_back(ofPoint( 0,1 ));
 }
 
-void Tower::update(float medium) {
-    factor = (abs(medium)*5) * -1;
-}
-
 void Tower::draw(float scale) {
 
-    int lineWidth = 6 * scale/100.0f;
-    lineWidth = lineWidth > 1 ? lineWidth : 1;
+    AbstractTower::draw(scale);
 
     ofPath path;
 

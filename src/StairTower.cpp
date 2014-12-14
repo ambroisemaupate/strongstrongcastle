@@ -25,6 +25,8 @@ void StairTower::buildPoints() {
     origin = ofPoint(0, 0);
 
     // Moving points
+    points.push_back(ofPoint( 0.5f,0.25f ));
+    points.push_back(ofPoint( 0,0.25f ));
     points.push_back(ofPoint( 0,0.0f ));
     points.push_back(ofPoint( 0.143f,0 ));
     points.push_back(ofPoint( 0.143f,0.143f ));
@@ -40,8 +42,7 @@ void StairTower::buildPoints() {
     points.push_back(ofPoint( 0.858f,0 ));
     points.push_back(ofPoint( 1.0f,0 ));
     points.push_back(ofPoint( 1.0f,0.25f ));
-    points.push_back(ofPoint( 0.0f,0.25f ));
-    points.push_back(ofPoint( 0,0 ));
+    points.push_back(ofPoint( 0.5f,0.25f ));
 
     // Fixed points
     narrowBasePoints.push_back(ofPoint( 0.9f,0.37f ));
@@ -52,13 +53,8 @@ void StairTower::buildPoints() {
     basePoints.push_back(ofPoint( 0.9f,1 ));
 }
 
-void StairTower::update(float medium) {
-    factor = (abs(medium)*5) * -1;
-}
-
 void StairTower::draw(float scale) {
-    int lineWidth = 6 * scale/100.0f;
-    lineWidth = lineWidth > 1 ? lineWidth : 1;
+    AbstractTower::draw(scale);
 
     ofPath path;
 

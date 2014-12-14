@@ -1,15 +1,25 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Tower count</Name>
-    <Value>27.773399353</Value>
+    <Value>14.113300323</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tower offset</Name>
-    <Value>674.876831055</Value>
+    <Value>300.492645264</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Waving towers</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Listen sound</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Sound amp</Name>
-    <Value>4.591133118</Value>
+    <Value>2.064039469</Value>
 </Widget>

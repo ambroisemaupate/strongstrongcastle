@@ -19,10 +19,6 @@ MelonTower::~MelonTower(){
 
 }
 
-void MelonTower::update(float medium) {
-    factor = (abs(medium)*5) * -1;
-}
-
 void MelonTower::buildPoints() {
     //Origin
     origin = ofPoint(0.15f, 0.33f);
@@ -42,9 +38,7 @@ void MelonTower::buildPoints() {
 }
 
 void MelonTower::draw(float scale) {
-
-    int lineWidth = 6 * scale/100.0f;
-    lineWidth = lineWidth > 1 ? lineWidth : 1;
+    AbstractTower::draw(scale);
 
     ofPath path;
 

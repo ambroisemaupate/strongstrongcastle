@@ -20,6 +20,7 @@ class ofApp : public ofBaseApp{
     int     bufferCounter;
     int     drawCounter;
     bool    lockTowerUpdate = false;
+    bool    listenSound = false;
 
     float smoothedVol;
     float scaledVol;
@@ -48,6 +49,7 @@ public:
     int marginWidth;
     int towerOffset = 0;
     float towerCount;
+    bool wavingTowers = false;
 
     ofxUICanvas *gui;
 

@@ -53,6 +53,8 @@
 		9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFD5D3C9D38E29DB72B32254 /* ofxUIDragableLabelButton.cpp */; };
 		9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BDC407620CDBA568B713D /* tinyxmlerror.cpp */; };
 		9F5C6DD965B4F3A6DB5B88F8 /* ofxUI2DGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02FF3B8D243CFB85AE0909EB /* ofxUI2DGraph.cpp */; };
+		A501D53E1A3DD66700744278 /* AbstractTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A501D53C1A3DD66700744278 /* AbstractTower.cpp */; };
+		A501D5411A3DDB2000744278 /* ChurchTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A501D53F1A3DDB2000744278 /* ChurchTower.cpp */; };
 		A515B9301A3D12A400C3DF04 /* HouseTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A515B92C1A3D12A400C3DF04 /* HouseTower.cpp */; };
 		A515B9311A3D12A400C3DF04 /* PikeTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A515B92E1A3D12A400C3DF04 /* PikeTower.cpp */; };
 		A8CC477E84407E63FBE21942 /* shPath.c in Sources */ = {isa = PBXBuildFile; fileRef = 6203EA51772E81F5895A72FB /* shPath.c */; };
@@ -232,6 +234,10 @@
 		A06BD7FFC96C9D4F6CA0A8E7 /* Tower.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Tower.h; path = src/Tower.h; sourceTree = SOURCE_ROOT; };
 		A128F7DF9E47492BCF66CE75 /* shParams.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = shParams.c; path = ../../../addons/ofxShivaVG/libs/ShivaVG/src/shParams.c; sourceTree = SOURCE_ROOT; };
 		A21E1D5FB0F548B5D69B8617 /* StairTower.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = StairTower.cpp; path = src/StairTower.cpp; sourceTree = SOURCE_ROOT; };
+		A501D53C1A3DD66700744278 /* AbstractTower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractTower.cpp; sourceTree = "<group>"; };
+		A501D53D1A3DD66700744278 /* AbstractTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTower.h; sourceTree = "<group>"; };
+		A501D53F1A3DDB2000744278 /* ChurchTower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChurchTower.cpp; sourceTree = "<group>"; };
+		A501D5401A3DDB2000744278 /* ChurchTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChurchTower.h; sourceTree = "<group>"; };
 		A515B92C1A3D12A400C3DF04 /* HouseTower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HouseTower.cpp; sourceTree = "<group>"; };
 		A515B92D1A3D12A400C3DF04 /* HouseTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseTower.h; sourceTree = "<group>"; };
 		A515B92E1A3D12A400C3DF04 /* PikeTower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PikeTower.cpp; sourceTree = "<group>"; };
@@ -714,6 +720,10 @@
 				F00A5063E764EA0D334562F9 /* Tower.cpp */,
 				A06BD7FFC96C9D4F6CA0A8E7 /* Tower.h */,
 				3690BE3038346ED4B101DD5E /* TowerInterface.h */,
+				A501D53C1A3DD66700744278 /* AbstractTower.cpp */,
+				A501D53D1A3DD66700744278 /* AbstractTower.h */,
+				A501D53F1A3DDB2000744278 /* ChurchTower.cpp */,
+				A501D5401A3DDB2000744278 /* ChurchTower.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -854,6 +864,7 @@
 				FBD0CD0AFE3849C14E829CAF /* ofxUIImageSampler.cpp in Sources */,
 				26874B150C8535AEA0F24C8C /* ofxUIImageSlider.cpp in Sources */,
 				A515B9301A3D12A400C3DF04 /* HouseTower.cpp in Sources */,
+				A501D53E1A3DD66700744278 /* AbstractTower.cpp in Sources */,
 				FB8AA9FA6535767BE31806BC /* ofxUIImageToggle.cpp in Sources */,
 				7C3DC84C9BFCBD2866DB2B6C /* ofxUILabel.cpp in Sources */,
 				FFD1EBFCA24DFB4E4427B4FE /* ofxUILabelButton.cpp in Sources */,
@@ -868,6 +879,7 @@
 				59C5F2F5D7254C33C00F97CB /* ofxUIRectangle.cpp in Sources */,
 				FE0F1DB69ACCD163E9DA2A15 /* ofxUIRotarySlider.cpp in Sources */,
 				A515B9311A3D12A400C3DF04 /* PikeTower.cpp in Sources */,
+				A501D5411A3DDB2000744278 /* ChurchTower.cpp in Sources */,
 				43BADBB2FE0F17D34B57A705 /* ofxUIScrollableCanvas.cpp in Sources */,
 				740A58CBFDFE578C83A349AF /* ofxUISlider.cpp in Sources */,
 				ADE7C2AFC51E3F7E5E389026 /* ofxUISortableList.cpp in Sources */,

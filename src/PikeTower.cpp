@@ -19,16 +19,13 @@ PikeTower::~PikeTower(){
 
 }
 
-void PikeTower::update(float medium) {
-    factor = (abs(medium)*5) * -1;
-}
-
 void PikeTower::buildPoints() {
     //Origin
-
+    housePoints.push_back(ofPoint( 0.5f, 0.7f ));
     housePoints.push_back(ofPoint( 0.1f, 0.7f ));
     housePoints.push_back(ofPoint( 0.5f, -0.1f ));
     housePoints.push_back(ofPoint( 0.9f, 0.7f ));
+    housePoints.push_back(ofPoint( 0.5f, 0.7f ));
 
     // Moving points
     points.push_back(ofPoint( 0.2f,0.7f ));
@@ -41,10 +38,7 @@ void PikeTower::buildPoints() {
 }
 
 void PikeTower::draw(float scale) {
-
-    int lineWidth = 6 * scale/100.0f;
-    lineWidth = lineWidth > 1 ? lineWidth : 1;
-
+    AbstractTower::draw(scale);
     ofPath path;
 
     for ( int i=0; i < housePoints.size(); i++ ) {

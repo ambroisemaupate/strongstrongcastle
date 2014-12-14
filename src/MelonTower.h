@@ -11,16 +11,11 @@
 
 #include <stdio.h>
 #include <vector>
-#include "TowerInterface.h"
+#include "AbstractTower.h"
 
 using namespace std;
 
-class MelonTower : public TowerInterface {
-
-    ofPoint origin;
-
-    float factor;
-    float delay;
+class MelonTower : public AbstractTower {
 
     vector<ofPoint> points;
     vector<ofPoint> basePoints;
@@ -31,7 +26,6 @@ public:
 
     virtual void draw(float scale);
     virtual void buildPoints();
-    virtual void update(float medium);
 };
 
 #endif /* defined(__strongStrongCastle__MelonTower__) */

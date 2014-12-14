@@ -12,18 +12,13 @@
 #include <stdio.h>
 #include <vector>
 
-#include "TowerInterface.h"
+#include "AbstractTower.h"
 
 using namespace std;
 
-class Tower: public TowerInterface {
+class Tower: public AbstractTower {
 
 protected:
-    ofPoint origin;
-
-    float factor;
-    float delay;
-
     vector<ofPoint> points;
     vector<ofPoint> basePoints;
 
@@ -31,7 +26,6 @@ public:
     Tower(float delay);
     virtual ~Tower();
 
-    virtual void update(float medium);
     virtual void draw(float scale);
     virtual void buildPoints();
 };

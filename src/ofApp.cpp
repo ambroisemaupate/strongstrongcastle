@@ -4,6 +4,7 @@
 #include "HouseTower.h"
 #include "PikeTower.h"
 #include "StairTower.h"
+#include "ChurchTower.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -22,6 +23,8 @@ void ofApp::setup(){
      */
     _shivaVGRenderer = ofPtr<ofxShivaVGRenderer>(new ofxShivaVGRenderer);
     ofSetCurrentRenderer(_shivaVGRenderer);
+    _shivaVGRenderer->setLineCapStyle(VG_CAP_ROUND);
+    _shivaVGRenderer->setLineJoinStyle(VG_JOIN_ROUND);
 
 
     int bufferSize = 256;
@@ -60,8 +63,10 @@ void ofApp::setup(){
     gui->addSlider("Tower offset",-1000.0f,1000.0f,towerOffset);
     gui->addSpacer();
     gui->addButton("Shuffle towers", false);
+    gui->addToggle("Waving towers", wavingTowers);
     gui->addSpacer();
     gui->addLabel("SOUND CONTROL");
+    gui->addToggle("Listen sound", listenSound);
     gui->addSlider("Sound amp",1.0f,10.0f,soundAmp);
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
@@ -85,7 +90,7 @@ void ofApp::update(){
             medium /= (int)ratio;
             //medium = ofMap(medium, 0.0, 0.17, 0.0, 1.0, true);
 
-            towers[i]->update(medium * soundAmp);
+            towers[i]->update(medium * soundAmp, wavingTowers);
         }
     }
 
@@ -129,14 +134,9 @@ void ofApp::draw(){
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-    if( key == 's' ){
-        soundStream.start();
-    }
+void ofApp::keyPressed(int key)
+{
 
-    if( key == 'e' ){
-        soundStream.stop();
-    }
 }
 
 //--------------------------------------------------------------
@@ -211,13 +211,31 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
         generateTower();
     }
 
+    if (e.getName() == "Listen sound")
+    {
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+
+        if (true == toggle->getValue())
+        {
+            soundStream.start();
+        } else {
+            soundStream.stop();
+        }
+    }
+
+    if (e.getName() == "Waving towers")
+    {
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+
+        wavingTowers = (bool) toggle->getValue();
+    }
+
 
 }
 
 void ofApp::generateTower() {
 
     lockTowerUpdate = true;
-    soundStream.stop();
 
     for (unsigned int i = 0; i < towers.size(); ++i) {
         delete towers[i];
@@ -227,7 +245,7 @@ void ofApp::generateTower() {
 
     for (unsigned int i = 0; i < towerCount; ++i)
     {
-        switch  ((int) ofRandom(0,5)) {
+        switch  ((int) ofRandom(0,6)) {
             case 0:
                 addTower( new MelonTower(i*500.0f) );
                 break;
@@ -243,9 +261,13 @@ void ofApp::generateTower() {
             case 4:
                 addTower( new PikeTower(i*500.0f) );
                 break;
+            case 5:
+                addTower( new ChurchTower(i*500.0f) );
+                break;
+
         }
     }
-    soundStream.start();
+
     lockTowerUpdate = false;
 }
 

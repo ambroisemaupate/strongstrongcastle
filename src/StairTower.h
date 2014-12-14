@@ -12,18 +12,13 @@
 #include <stdio.h>
 #include <vector>
 
-#include "TowerInterface.h"
+#include "AbstractTower.h"
 
 using namespace std;
 
-class StairTower: public TowerInterface {
+class StairTower: public AbstractTower {
 
 protected:
-    ofPoint origin;
-
-    float factor;
-    float delay;
-
     vector<ofPoint> points;
     vector<ofPoint> narrowBasePoints;
     vector<ofPoint> basePoints;
@@ -32,7 +27,6 @@ public:
     StairTower(float delay);
     virtual ~StairTower();
 
-    virtual void update(float medium);
     virtual void draw(float scale);
     virtual void buildPoints();
 };

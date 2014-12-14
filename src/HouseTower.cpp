@@ -19,16 +19,14 @@ HouseTower::~HouseTower(){
 
 }
 
-void HouseTower::update(float medium) {
-    factor = (abs(medium)*5) * -1;
-}
-
 void HouseTower::buildPoints() {
     //Origin
 
+    housePoints.push_back(ofPoint( 0.5f, 0.25f ));
     housePoints.push_back(ofPoint( 0.1f, 0.25f ));
     housePoints.push_back(ofPoint( 0.5f, 0 ));
     housePoints.push_back(ofPoint( 0.9f, 0.25f ));
+    housePoints.push_back(ofPoint( 0.5f, 0.25f ));
 
     // Moving points
     points.push_back(ofPoint( 0.1f,0.25f ));
@@ -41,10 +39,7 @@ void HouseTower::buildPoints() {
 }
 
 void HouseTower::draw(float scale) {
-
-    int lineWidth = 6 * scale/100.0f;
-    lineWidth = lineWidth > 1 ? lineWidth : 1;
-
+    AbstractTower::draw(scale);
     ofPath path;
 
     for ( int i=0; i < housePoints.size(); i++ ) {
