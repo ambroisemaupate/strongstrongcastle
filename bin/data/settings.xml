@@ -2,23 +2,23 @@
     <Kind>40</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>727.000000000</XPosition>
-    <YPosition>31.000000000</YPosition>
+    <XPosition>773.000000000</XPosition>
+    <YPosition>32.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Tower count</Name>
-    <Value>5.546798229</Value>
+    <Value>15.039408684</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tower offset</Name>
-    <Value>625.615722656</Value>
+    <Value>428.571472168</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Line width</Name>
-    <Value>5.655172348</Value>
+    <Value>7.783251286</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,15 +28,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Listen sound</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Sound amp</Name>
-    <Value>3.660098553</Value>
+    <Value>5.566502571</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Zoom</Name>
-    <Value>1.000000000</Value>
+    <Value>1.623152733</Value>
 </Widget>
