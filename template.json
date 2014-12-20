@@ -1,0 +1,10 @@
+{
+    "title": "StrongStrongCasle",
+    "icon": "icon.icns",
+    "background": "background.gif",
+    "icon-size": 128,
+    "contents": [
+        { "x": 500, "y": 120, "type": "link", "path": "/Applications" },
+        { "x": 235, "y": 250, "type": "file", "path": "bin/StrongStrongCastle.app" }
+    ]
+}
