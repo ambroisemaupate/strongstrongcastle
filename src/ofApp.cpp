@@ -301,9 +301,11 @@ void ofApp::generateTower() {
 
     lockTowerUpdate = true;
 
-    for (unsigned int i = 0; i < towers.size(); ++i) {
-        delete towers[i];
-    }
+//    for (unsigned int i = 0; i < towers.size(); ++i) {
+//        if(NULL != towers[i]) {
+//            delete towers[i];
+//        }
+//    }
 
     towers.clear();
 
