@@ -249,6 +249,7 @@
 		A515B92E1A3D12A400C3DF04 /* PikeTower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PikeTower.cpp; sourceTree = "<group>"; };
 		A515B92F1A3D12A400C3DF04 /* PikeTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PikeTower.h; sourceTree = "<group>"; };
 		A5332F951A45ABBB00F30153 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		A5332F961A45AD5E00F30153 /* template.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = template.dmg; sourceTree = "<group>"; };
 		A5938A241A45A6D200D704BD /* icon-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-02.png"; sourceTree = "<group>"; };
 		A64B8AA7481267CD4A76C16B /* ofxUITabBar.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUITabBar.cpp; path = ../../../addons/ofxUI/src/ofxUITabBar.cpp; sourceTree = SOURCE_ROOT; };
 		A852AD3A75FDFD790A24855A /* CreEPS.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CreEPS.hpp; path = ../../../addons/ofxVectorGraphics/libs/CreEPS.hpp; sourceTree = SOURCE_ROOT; };
@@ -710,6 +711,7 @@
 				E4B69B5B0A3A1756003C02F2 /* StrongStrongCastleDebug.app */,
 				A5938A241A45A6D200D704BD /* icon-02.png */,
 				A5332F951A45ABBB00F30153 /* icon.icns */,
+				A5332F961A45AD5E00F30153 /* template.dmg */,
 			);
 			sourceTree = "<group>";
 		};
