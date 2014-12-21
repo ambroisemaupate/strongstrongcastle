@@ -85,7 +85,20 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    /*
+     * Sound
+     */
+    //lets scale the vol up to a 0-1 range
+    scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
+    
+    //lets record the volume into an array
+    volHistory.push_back( scaledVol );
+    
+    //if we are bigger the the size we want to record - lets drop the oldest value
+    if( volHistory.size() >= 400 ){
+        volHistory.erase(volHistory.begin(), volHistory.begin()+1);
+    }
+    
     if (!lockTowerUpdate) {
         int ratio = left.size() / (float) towers.size();
 
@@ -97,24 +110,12 @@ void ofApp::update(){
                 medium += left[mi];
             }
             medium /= (int)ratio;
-            //medium = ofMap(medium, 0.0, 0.17, 0.0, 1.0, true);
-
-            towers[i]->update(medium * soundAmp, wavingTowers);
+            
+            float cosAbsiss = ofMap(i, 0.0f, towers.size()-1, -10.0f, 10.0f);
+            float volAbsiss = ((cos(cosAbsiss/PI)*0.5f) + 0.5f) * scaledVol;
+            
+            towers[i]->update(medium * soundAmp, volAbsiss, wavingTowers);
         }
-    }
-
-    /*
-     * Sound
-     */
-    //lets scale the vol up to a 0-1 range
-    scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
-
-    //lets record the volume into an array
-    volHistory.push_back( scaledVol );
-
-    //if we are bigger the the size we want to record - lets drop the oldest value
-    if( volHistory.size() >= 400 ){
-        volHistory.erase(volHistory.begin(), volHistory.begin()+1);
     }
 }
 

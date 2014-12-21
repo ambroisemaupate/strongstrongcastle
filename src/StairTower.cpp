@@ -81,5 +81,5 @@ void StairTower::draw(float scale, int towerLineWidth) {
     path.setStrokeWidth(lineWidth);
     path.scale(scale, scale);
 
-    path.draw(0, 0);
+    path.draw(0, this->volume);
 }

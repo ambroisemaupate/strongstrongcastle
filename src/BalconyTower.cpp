@@ -79,5 +79,5 @@ void BalconyTower::draw(float scale, int towerLineWidth) {
     path.setFilled(true);
     path.setStrokeWidth(lineWidth);
     path.scale(scale, scale);
-    path.draw(0, 0);
+    path.draw(0, this->volume);
 }

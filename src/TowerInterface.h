@@ -18,7 +18,7 @@ public:
         
     };
     virtual void draw(float scale, int towerLineWidth) = 0;
-    virtual void update(float medium, bool wavingTowers = false) = 0;
+    virtual void update(float medium, float volume, bool wavingTowers = false) = 0;
     virtual void buildPoints() = 0;
 };
 

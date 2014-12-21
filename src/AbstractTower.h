@@ -19,11 +19,13 @@ protected:
     float factor;
     float delay;
     float lineWidth;
+    float volume;
 
     ofPoint origin;
+    ofPoint motion;
 
 public:
-    virtual void update(float medium, bool wavingTowers = false);
+    virtual void update(float medium, float volume, bool wavingTowers = false);
     virtual void draw(float scale, int towerLineWidth);
 };
 
